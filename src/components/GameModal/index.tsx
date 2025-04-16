@@ -102,14 +102,14 @@ export function GameModal({ game, isOpen, onClose }: GameModalProps) {
           </div>
         ) : (
           <>
-            <div className="flex flex-col gap-4 md:flex-row">
-              <div className="flex-shrink-0">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
+              <div className="flex-shrink-0 md:w-[192px] self-center mx-auto md:mx-0">
                 <img 
                   src={game.thumb} 
                   alt={game.title} 
-                  className="h-auto w-full rounded-md md:w-48" 
+                  className="h-[237px] w-[178px] mx-auto rounded-md object-cover md:h-[255.63px] md:w-[192px]" 
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://placehold.co/200x100?text=Imagem+Indisponível';
+                    (e.target as HTMLImageElement).src = 'https://placehold.co/178x237?text=Indisponível';
                   }}
                 />
               </div>

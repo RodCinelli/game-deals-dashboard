@@ -25,19 +25,22 @@ export const columns: ColumnDef<Deal>[] = [
     cell: ({ row }) => {
       const title = row.original.title
       return (
-        <div className="flex items-center gap-3">
-          <img 
-            src={row.original.thumb} 
-            alt={title} 
-            className="h-14 w-auto min-w-14 rounded object-cover" 
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = 'https://placehold.co/100x60?text=Imagem+Indisponível';
-            }}
-          />
-          <span className="font-medium line-clamp-2 max-w-[150px] sm:max-w-[200px] md:max-w-none">{title}</span>
+        <div className="flex items-center gap-3 min-w-0 md:min-w-[250px]">
+          <div className="flex-shrink-0 w-[84.19px] h-[56px] md:w-[149.33px] bg-muted rounded overflow-hidden">
+            <img 
+              src={row.original.thumb} 
+              alt={title} 
+              className="h-[56px] w-[84.19px] md:w-[149.33px] rounded object-cover" 
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://placehold.co/84x56?text=Indisponível';
+              }}
+            />
+          </div>
+          <span className="font-medium line-clamp-2 min-w-0 flex-1 max-w-[100px] xs:max-w-[150px] sm:max-w-[200px] md:max-w-none">{title}</span>
         </div>
       )
     },
+    size: 300,
   },
   {
     accessorKey: "salePrice",

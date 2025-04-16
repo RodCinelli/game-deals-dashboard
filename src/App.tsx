@@ -156,7 +156,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors">
       <div className="container mx-auto px-4 py-8">
-        <header className="mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <header className="mb-6 md:mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div>
             <h1 className="text-3xl font-bold title-animated mb-2">Game Deals Dashboard</h1>
             <p className="text-muted-foreground subtitle-animated text-center">

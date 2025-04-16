@@ -100,11 +100,14 @@ Este projeto é um desafio frontend que consiste em desenvolver um dashboard par
 ## 🚀 Como Executar
 
 1. Clone o repositório
+
 2. Instale as dependências:
+
    ```bash
    npm install
    ```
 3. Execute o projeto:
+
    ```bash
    npm run dev
    ```

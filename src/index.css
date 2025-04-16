@@ -57,3 +57,79 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Animações para título e subtítulo */
+@keyframes titleAnimation {
+  0% {
+    color: hsl(240, 10%, 3.9%);
+    text-shadow: 0 0 0 transparent;
+  }
+  30% {
+    color: hsl(142.1, 76.2%, 36.3%);
+    text-shadow: 0 0 15px hsla(142.1, 76.2%, 36.3%, 0.5);
+  }
+  60% {
+    color: hsl(240, 10%, 3.9%);
+    text-shadow: 0 0 0 transparent;
+  }
+  100% {
+    color: hsl(240, 10%, 3.9%);
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes titleAnimationDark {
+  0% {
+    color: hsl(0, 0%, 98%);
+    text-shadow: 0 0 0 transparent;
+  }
+  30% {
+    color: hsl(142.1, 70.6%, 45.3%);
+    text-shadow: 0 0 15px hsla(142.1, 70.6%, 45.3%, 0.5);
+  }
+  60% {
+    color: hsl(0, 0%, 98%);
+    text-shadow: 0 0 0 transparent;
+  }
+  100% {
+    color: hsl(0, 0%, 98%);
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes initialEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtitleAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-animated {
+  animation: initialEntrance 1s ease-out forwards, titleAnimation 3s ease-in-out infinite 1s;
+}
+
+.dark .title-animated {
+  animation: initialEntrance 1s ease-out forwards, titleAnimationDark 3s ease-in-out infinite 1s;
+}
+
+.subtitle-animated {
+  animation: subtitleAnimation 2s ease-in-out forwards;
+}

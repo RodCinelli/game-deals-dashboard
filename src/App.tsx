@@ -159,7 +159,7 @@ function App() {
         <header className="mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div>
             <h1 className="text-3xl font-bold title-animated mb-2">Game Deals Dashboard</h1>
-            <p className="text-muted-foreground subtitle-animated">
+            <p className="text-muted-foreground subtitle-animated text-center">
               Encontre as melhores ofertas de jogos
             </p>
           </div>

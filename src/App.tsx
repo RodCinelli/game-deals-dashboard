@@ -5,10 +5,9 @@ import { columns } from './components/DataTable/columns';
 import { FilterSidebar } from './components/FilterSidebar';
 import { Deal, DealFilter } from './types';
 import { getDeals } from './lib/api';
-import { MoonIcon, SunIcon, LayoutGrid, LayoutList, Star } from 'lucide-react';
+import { MoonIcon, SunIcon, LayoutGrid, LayoutList, Star, Trash2 } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { GameModal } from './components/GameModal';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 
 // Chave para armazenar favoritos no localStorage
 const FAVORITES_KEY = 'game-deals-favorites';
@@ -138,6 +137,13 @@ function App() {
     setShowOnlyFavorites(prev => !prev);
   };
 
+  // Nova função para limpar todos os favoritos
+  const handleClearAllFavorites = () => {
+    setFavorites(new Set());
+    localStorage.removeItem(FAVORITES_KEY); // Remover do localStorage
+    setShowOnlyFavorites(false); // Desativar o filtro de favoritos após limpar
+  };
+
   // Evitar problemas de hidratação renderizando apenas após montagem
   if (!mounted) {
     return (
@@ -179,15 +185,30 @@ function App() {
               onClick={handleToggleShowOnlyFavorites}
               aria-label={showOnlyFavorites ? 'Mostrar todos os jogos' : 'Mostrar apenas favoritos'}
               title={showOnlyFavorites ? 'Mostrar todos' : 'Mostrar favoritos'}
-              className="relative"
+              className="relative transition-transform duration-150 hover:scale-105 active:scale-95"
             >
-              <Star className={`h-5 w-5 ${showOnlyFavorites ? 'fill-primary-foreground' : ''}`} />
+              <Star 
+                className={`h-5 w-5 transition-all duration-200 ${showOnlyFavorites ? 'fill-primary-foreground' : ''} ${favorites.size > 0 && !showOnlyFavorites ? 'group-hover:fill-yellow-400' : ''}`}
+              />
               {favorites.size > 0 && (
-                <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground">
+                <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground transition-transform group-hover:scale-110">
                   {favorites.size}
                 </span>
               )}
             </Button>
+            
+            {showOnlyFavorites && favorites.size > 0 && (
+              <Button
+                variant="destructive"
+                size="icon"
+                onClick={handleClearAllFavorites}
+                aria-label="Limpar todos os favoritos"
+                title="Limpar todos os favoritos"
+                className="transition-transform duration-150 hover:scale-105 active:scale-95 hover:brightness-110"
+              >
+                <Trash2 className="h-5 w-5" />
+              </Button>
+            )}
             
             <Button
               variant="outline"
@@ -195,11 +216,12 @@ function App() {
               onClick={() => setDarkMode(!darkMode)}
               aria-label="Toggle dark mode"
               title={darkMode ? 'Modo Claro' : 'Modo Escuro'}
+              className="transition-transform duration-150 hover:scale-105 active:scale-95"
             >
               {darkMode ? (
-                <SunIcon className="h-5 w-5" />
+                <SunIcon className="h-5 w-5 transition-transform duration-500 rotate-0 scale-100 hover:rotate-12 hover:text-yellow-500" />
               ) : (
-                <MoonIcon className="h-5 w-5" />
+                <MoonIcon className="h-5 w-5 transition-transform duration-500 rotate-0 scale-100 hover:-rotate-12 hover:text-blue-400" />
               )}
             </Button>
           </div>

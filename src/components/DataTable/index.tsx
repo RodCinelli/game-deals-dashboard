@@ -95,21 +95,25 @@ export function DataTable<TData, TValue>({
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
+                    className="group transition-colors duration-150 hover:bg-muted/50 data-[state=selected]:bg-muted"
                   >
                     <TableCell className="w-10 p-0 text-center">
                       <button
                         onClick={(e) => onToggleFavorite(e, game.gameID)}
-                        className="flex h-10 w-10 items-center justify-center text-yellow-500 hover:text-yellow-400"
+                        className="flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors duration-200 hover:text-yellow-500 group-hover:text-yellow-400"
                         aria-label={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
                       >
-                        <Star className={isFavorite ? "fill-yellow-500" : ""} size={18} />
+                        <Star 
+                          className={`${isFavorite ? "fill-yellow-500 text-yellow-500" : "fill-transparent"} transition-all duration-300 ${isFavorite ? "group-hover:scale-110" : "group-hover:scale-110 group-hover:text-yellow-400"}`}
+                          size={18}
+                        />
                       </button>
                     </TableCell>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell 
                         key={cell.id}
                         onClick={() => handleRowClick(row)}
-                        className="cursor-pointer"
+                        className="cursor-pointer transition-colors duration-150 group-hover:text-foreground"
                       >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </TableCell>

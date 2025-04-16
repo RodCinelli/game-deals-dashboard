@@ -8,19 +8,39 @@ Este projeto é um desafio frontend que consiste em desenvolver um dashboard par
 
 ## ⚙️ Tecnologias Utilizadas
 
+### Core
 - React 19
 - TypeScript
 - Vite
 - TailwindCSS
-- shadcn/ui
 - Axios
+
+### UI Components e Estilização
+- shadcn/ui
+- Radix UI (components primitivos)
+- class-variance-authority
+- clsx
+- tailwind-merge
+- tailwindcss-animate
+- lucide-react (ícones)
+
+### Data Table
+- TanStack Table (antigo React Table)
+
+### Desenvolvimento
+- ESLint
+- TypeScript ESLint
+- Autoprefixer
+- PostCSS
 
 ## 🚀 Funcionalidades
 
 ### 1. 🗃️ Data Table de Jogos
 
 - Exibição dos jogos retornados pela API `/deals` em um data table
+
 - A tabela contém:
+
   - Nome do jogo
   - Preço atual
   - Preço original
@@ -33,15 +53,19 @@ Este projeto é um desafio frontend que consiste em desenvolver um dashboard par
 - Filtro por loja (storeID)
 - Filtro por faixa de preço (lowerPrice e upperPrice)
 - Filtro por porcentagem mínima de desconto
+
 - Ordenação por:
+
   - Price
   - Savings
   - Deal Rating
+
 - Campo de busca por título
 
 ### 3. 🔍 Modal de Detalhes
 
 - Modal com detalhes adicionais ao clicar em um jogo:
+
   - Nome do jogo
   - Imagem maior
   - Preços (atual e original)
@@ -52,6 +76,7 @@ Este projeto é um desafio frontend que consiste em desenvolver um dashboard par
 ### 4. 🧩 Componentização
 
 - Componentes reutilizáveis organizados por pastas:
+
   - `<DataTable />`
   - `<GameModal />`
   - `<FilterSidebar />` ou `<FilterControls />`

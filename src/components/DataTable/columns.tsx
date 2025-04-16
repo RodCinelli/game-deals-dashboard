@@ -25,13 +25,16 @@ export const columns: ColumnDef<Deal>[] = [
     cell: ({ row }) => {
       const title = row.original.title
       return (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <img 
             src={row.original.thumb} 
             alt={title} 
-            className="h-16 w-auto rounded" 
+            className="h-14 w-auto min-w-14 rounded object-cover" 
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://placehold.co/100x60?text=Imagem+Indisponível';
+            }}
           />
-          <span className="font-medium">{title}</span>
+          <span className="font-medium line-clamp-2 max-w-[150px] sm:max-w-[200px] md:max-w-none">{title}</span>
         </div>
       )
     },
@@ -60,7 +63,9 @@ export const columns: ColumnDef<Deal>[] = [
         style: "currency",
         currency: "BRL",
       }).format(price)
-      return <div className="font-medium text-green-600">{formatted}</div>
+      return <div className="font-medium text-green-600 text-right whitespace-nowrap px-2">
+        {formatted}
+      </div>
     },
   },
   {
@@ -87,7 +92,7 @@ export const columns: ColumnDef<Deal>[] = [
         style: "currency",
         currency: "BRL",
       }).format(price)
-      return <div className="line-through text-gray-500">{formatted}</div>
+      return <div className="line-through text-gray-500 text-right whitespace-nowrap px-2">{formatted}</div>
     },
   },
   {
@@ -111,7 +116,7 @@ export const columns: ColumnDef<Deal>[] = [
     cell: ({ row }) => {
       const savings = parseFloat(row.original.savings)
       return (
-        <div className="font-medium text-green-600">{savings.toFixed(0)}%</div>
+        <div className="font-medium text-green-600 text-right whitespace-nowrap px-2">{savings.toFixed(0)}%</div>
       )
     },
   },
@@ -161,7 +166,7 @@ export const columns: ColumnDef<Deal>[] = [
       }
 
       return (
-        <div className={`font-bold ${ratingColor}`}>
+        <div className={`font-bold ${ratingColor} text-center`}>
           {rating.toFixed(1)}
         </div>
       )

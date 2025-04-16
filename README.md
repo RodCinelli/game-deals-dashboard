@@ -1,54 +1,89 @@
-# React + TypeScript + Vite
+# 🎮 Game Deals Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um dashboard interativo para rastrear ofertas de jogos utilizando a CheapShark API, com foco em design moderno e experiência de usuário.
 
-Currently, two official plugins are available:
+## 🎯 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto é um desafio frontend que consiste em desenvolver um dashboard para visualizar ofertas de jogos de diferentes plataformas, utilizando a [CheapShark API](https://apidocs.cheapshark.com/).
 
-## Expanding the ESLint configuration
+## ⚙️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- TailwindCSS
+- shadcn/ui
+- Axios
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Funcionalidades
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. 🗃️ Data Table de Jogos
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Exibição dos jogos retornados pela API `/deals` em um data table
+- A tabela contém:
+  - Nome do jogo
+  - Preço atual
+  - Preço original
+  - Porcentagem de desconto
+  - Loja
+  - Nota (Deal Rating)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 2. 🎛️ Filtros e Selects
+
+- Filtro por loja (storeID)
+- Filtro por faixa de preço (lowerPrice e upperPrice)
+- Filtro por porcentagem mínima de desconto
+- Ordenação por:
+  - Price
+  - Savings
+  - Deal Rating
+- Campo de busca por título
+
+### 3. 🔍 Modal de Detalhes
+
+- Modal com detalhes adicionais ao clicar em um jogo:
+  - Nome do jogo
+  - Imagem maior
+  - Preços (atual e original)
+  - Loja
+  - Histórico de menor preço (historicalLow)
+  - Link para compra
+
+### 4. 🧩 Componentização
+
+- Componentes reutilizáveis organizados por pastas:
+  - `<DataTable />`
+  - `<GameModal />`
+  - `<FilterSidebar />` ou `<FilterControls />`
+  - `<Select />`, `<Input />`, `<PriceRange />`
+  - `<GameCard />` (visualização alternativa)
+
+### 5. 💅 Design e UX
+
+- Layout moderno e responsivo
+- Modais e transições suaves
+- Feedback visual para elementos interativos
+- Tema escuro/claro
+
+## 🧠 Extras (Diferenciais)
+
+- Scroll infinito ou paginação
+- Salvamento de favoritos com localStorage/cookies
+- Skeleton loaders
+- Toggle para alternar entre modo tabela e modo cards
+
+## 🚀 Como Executar
+
+1. Clone o repositório
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Execute o projeto:
+   ```bash
+   npm run dev
+   ```
+
+## 📝 API Utilizada
+
+O projeto utiliza a [CheapShark API](https://apidocs.cheapshark.com/) para obter informações sobre ofertas de jogos em diferentes plataformas e lojas.

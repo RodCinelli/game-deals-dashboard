@@ -51,7 +51,7 @@ export function GameGrid({
   return (
     <div className="relative">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-fade-in">
-        {data.map((game, index) => (
+        {data.map((game) => (
           <GameCard
             key={game.dealID}
             game={game}

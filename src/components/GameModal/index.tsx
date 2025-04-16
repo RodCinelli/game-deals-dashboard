@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { X, ChevronLeft, ChevronRight, Sparkles, ShoppingCart } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Deal } from '../../types';
 import { getGameDetails } from '../../lib/api';
